@@ -1,10 +1,38 @@
-<p style="color: green"><%= notice %></p>
+<div class='row'>
+  <div class='col-lg-12'>
+    <h1>Detalles del producto</h1>
+    <%= link_to 'Regresar a la lista de productos', products_path, class: 'btn btn-primary' %>
+    <%= link_to 'Editar este producto', edit_product_path(@product), class: 'btn btn-primary' %>
+    <%= link_to 'Eliminar este producto', @product, method: :delete, class: 'btn btn-danger'%>
 
-<%= render @product %>
+    <div class='card'>
+      <table class='table'>
+        <tr>
+        <td><b>Nombre del producto</b></td>
+        <td><%= @product.name%></td>
+        </tr>
 
-<div>
-  <%= link_to "Edit this product", edit_product_path(@product) %> |
-  <%= link_to "Back to products", products_path %>
+        <tr>
+        <td><b>Referencia</b></td>
+        <td><%= @product.reference%></td>
+        </tr>
 
-  <%= button_to "Destroy this product", @product, method: :delete %>
+        <tr>
+        <td><b>Descripcion</b></td>
+        <td><%= @product.description%></td>
+        </tr>
+
+        <tr>
+        <td><b>Cantidad</b></td>
+        <td><%= 0 %></td>
+        </tr>
+
+        <tr>
+        <td><b>Fecha de creacion</b></td>
+        <td><%= @product.created_at%></td>
+        </tr>
+      </table>
+    </div>
+    
+  </div>
 </div>

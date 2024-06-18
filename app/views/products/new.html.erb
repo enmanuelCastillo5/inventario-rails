@@ -1,9 +1,6 @@
-<h1>New product</h1>
-
+<h1>Crear nuevo producto</h1>
+  <%= link_to "regresar a la lista de producto", products_path, class: 'btn btn-outline-primary' %>
+<hr>
+<br>
 <%= render "form", product: @product %>
 
-<br>
-
-<div>
-  <%= link_to "Back to products", products_path %>
-</div>
