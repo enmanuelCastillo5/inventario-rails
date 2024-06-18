@@ -57,14 +57,36 @@ class ProductsController < ApplicationController
     end
   end
 
+  def new_movement
+      @product = Product.find(params[:id])
+      @movement = Movement.new
+  end
+
+  def create_movement
+    @product = Product.find(params[:id])
+    @movement = Movement.new(movement_params)
+    @movement.product_id = @product.id
+
+    if @movement.save
+      redirect_to @product, notice: 'Se creo el movimineto correctamente'
+    else
+      flash[:notice] = 'Ha ocurrido un error al crear el movimiento'
+      render :new_movement, status: :unprocessable_entity
+    end
+  end
+  
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
       @product = Product.find(params[:id])
     end
-
     # Only allow a list of trusted parameters through.
     def product_params
       params.require(:product).permit(:name, :reference, :description)
+    end
+
+    def movement_params
+      params.require(:movement).permit(:quantity, :movement_type, :comment)
     end
 end
